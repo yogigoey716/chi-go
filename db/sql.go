@@ -8,6 +8,19 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/yogigoey716/chi-go/config"
 )
+/*
+	Pada file ini dilakukan penghubungan koneksi dengan database. 
+	Terdapat banyak library yang bisa digunakan untuk koneksi ini, pada kali ini kita menggunakan GORM untuk postgresSQL.
+	GORM memberikan method yang mudah untuk melakukan operasi database kali ini.
+
+	Pada kode ini terdapat banyak pointer(tanda *) yang digunakan. Hal ini bertujuan untuk mengakses memory untuk kode koneksi database.
+	Hal ini bertujuan untuk tidak melakukan pembuatan variable baru (jadi 2) apabila melakukan inisialisasi New().
+	Yang bertujuan untuk tidak melakukan penambahan memory (effisiensi pembuatan variable cost memory (RAM)).
+	Apabila dibandingkan dengan bahasa pemrograman lain (Java, Kotlin, Python, C++ (OOP)) hal yang dilakukan ini adalah Singleton.
+	
+	Apabila ingin menggantikan database ke database yang lainnya kalian dapat mengubah file ini saja.
+	 
+*/
 
 type sqlConn struct {
 	DbPool *gorm.DB
